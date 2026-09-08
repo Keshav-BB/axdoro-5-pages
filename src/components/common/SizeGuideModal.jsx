@@ -4,8 +4,9 @@ import { SIZE_CHART } from '../../data/sizeGuideData';
 
 export default function SizeGuideModal({ isOpen, onClose, categorySlug = 'oversized-tees' }) {
   const [unit, setUnit] = useState('inches'); // 'inches' | 'cm'
+  const slug = categorySlug || 'oversized-tees';
   const [activeTab, setActiveTab] = useState(
-    categorySlug.includes('hoodie') ? 'hoodies' : categorySlug.includes('cargo') ? 'cargos-bottoms' : 'oversized-tees'
+    slug.includes('hoodie') ? 'hoodies' : slug.includes('cargo') ? 'cargos-bottoms' : 'oversized-tees'
   );
 
   if (!isOpen) return null;

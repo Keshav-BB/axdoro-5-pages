@@ -35,7 +35,8 @@ function StorefrontApp() {
   // Modals
   const [isSearchOpen, setIsSearchOpen] = useState(false);
   const [quickViewProduct, setQuickViewProduct] = useState(null);
-  const [sizeGuideCategory, setSizeGuideCategory] = useState(null);
+  const [isSizeGuideOpen, setIsSizeGuideOpen] = useState(false);
+  const [sizeGuideCategory, setSizeGuideCategory] = useState('oversized-tees');
 
   const navigateTo = (route, options = {}) => {
     setCurrentRoute(route);
@@ -55,7 +56,8 @@ function StorefrontApp() {
   };
 
   const handleOpenSizeGuide = (catSlug = 'oversized-tees') => {
-    setSizeGuideCategory(catSlug);
+    setSizeGuideCategory(catSlug || 'oversized-tees');
+    setIsSizeGuideOpen(true);
   };
 
   const handleOrderCompleted = (orderId) => {
@@ -180,9 +182,9 @@ function StorefrontApp() {
 
       {/* Size Guide Modal */}
       <SizeGuideModal
-        isOpen={!!sizeGuideCategory}
+        isOpen={isSizeGuideOpen}
         categorySlug={sizeGuideCategory}
-        onClose={() => setSizeGuideCategory(null)}
+        onClose={() => setIsSizeGuideOpen(false)}
       />
 
       {/* Floating AI Shopping & Support Assistant */}
